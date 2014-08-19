@@ -22,6 +22,7 @@ local function updateHomeScreen()
       if not(string.sub(theFilePath,1,1) == ".") then
         if fs.exists(fs.combine(theFilePath,"main.lua")) then
           appList[#appList+1] = theFilePath
+          print(theFilePath)
         end
       end
     end
