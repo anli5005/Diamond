@@ -14,6 +14,7 @@ local function updateHomeScreen()
   term.setTextColor(colors.lightGray)
   term.clear()
   updateHomeTime()
+  term.setCursorPos(2,3)
   
   local rawAppList = fs.list("/Apps")
   local appList = {}
@@ -27,7 +28,6 @@ local function updateHomeScreen()
       end
     end
   end
-  term.setCursorPos(2,3)
   print(textutils.serialize(appList))
 end
 
