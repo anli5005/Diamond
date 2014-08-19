@@ -23,6 +23,7 @@ local function updateHomeScreen()
         if fs.exists(fs.combine(theFilePath,"main.lua")) then
           appList[#appList+1] = theFilePath
         end
+      end
     end
   end
   print(textutils.serialize(appList))
