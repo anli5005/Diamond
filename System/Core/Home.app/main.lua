@@ -19,10 +19,11 @@ local function updateHomeScreen()
   local rawAppList = fs.list("/Apps")
   local appList = {}
   for appKey,theFilePath in ipairs(rawAppList) do
-    if fs.isDir(theFilePath) then
+    local realFilePath = fs.combine("/Apps", theFilePath)
+    if fs.isDir(realFilePath) then
       if not(string.sub(theFilePath,1,1) == ".") then
-        if fs.exists(fs.combine(theFilePath,"main.lua")) then
-          appList[#appList+1] = theFilePath
+        if fs.exists(fs.combine(realFilePath,"main.lua")) then
+          appList[#appList+1] = realFilePath
           print(theFilePath)
         end
       end
