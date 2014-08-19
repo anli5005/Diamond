@@ -14,7 +14,6 @@ local function updateHomeScreen()
   term.setTextColor(colors.lightGray)
   term.clear()
   updateHomeTime()
-  term.setCursorPos(2,3)
   
   local rawAppList = fs.list("/Apps")
   local appList = {}
@@ -24,12 +23,22 @@ local function updateHomeScreen()
       if not(string.sub(theFilePath,1,1) == ".") then
         if fs.exists(fs.combine(realFilePath,"main.lua")) then
           appList[#appList+1] = realFilePath
-          print(theFilePath)
         end
       end
     end
   end
-  print(textutils.serialize(appList))
+  term.setCursorPos(4,2)
+  for appKey,theApp in ipairs(appList) do
+    local h = fs.open(fs.combine(theApp, "settings"), "r")
+    local text = h.readLine()
+    local bg = h.readLine()
+    local tColor = h.readLine()
+    h.close()
+    term.setBackgroundColor(bg)
+    term.setTextColor(tColor)
+    term.clearLine()
+    print(" "..text)
+  end
 end
 
 updateHomeScreen()
