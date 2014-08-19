@@ -67,6 +67,8 @@ else
   end
   print(" Hold CTRL+S to shutdown")
   print(" Hold CTRL+R to restart")
+  term.setTextColor(colors.lightGray)
+  term.setCursorBlink(true)
   while true do
     local e, btn, x, y = os.pullEvent("mouse_click")
     if theUsers[y-5] then
@@ -75,6 +77,7 @@ else
     end
   end
 end
+term.setCursorBlink(false)
 local appPath = fs.getDir(shell.getRunningProgram())
 shell.setDir("")
 shell.run(fs.combine(appPath, "login.lua"), selected)
