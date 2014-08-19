@@ -1,6 +1,8 @@
 shell.setDir("")
 shell.openTab("Diamond/System/Core/Notifications.app/main.lua")
 
+local theAppList = {}
+
 local function updateHomeTime()
   term.setBackgroundColor(colors.gray)
   term.setTextColor(colors.lightGray)
@@ -39,15 +41,34 @@ local function updateHomeScreen()
     term.clearLine()
     print(" "..text)
   end
+  theAppList = appList
 end
 
 updateHomeScreen()
 multishell.setTitle(multishell.getCurrent(), "Diamond")
 local timer = os.startTimer(0.1)
 while true do
-  event, p1, p2, p3, p4, p5 = os.pullEvent()
+  local event, p1, p2, p3, p4, p5 = os.pullEvent()
   if (event == "timer") and (p1 == timer) then
     updateHomeTime()
     timer = os.startTimer(0.1)
+  end
+  if (event == "mouse_click") then
+    local b = p1
+    local x = p2
+    local y = p3
+    local w,h = term.getSize()
+    if (y > 3) and (y < (h - 2)) then
+      -- Clicked inside apps
+      local appY = y - 3
+      if theAppList[appY] then
+        shell.setDir("")
+        shell.openTab(fs.combine(theAppList[appY], "main.lua"))
+      end
+    elseif y > (h - 3) then
+      -- Clicked menu
+    else
+      -- Clicked clock
+    end
   end
 end
