@@ -26,6 +26,7 @@ local function updateHomeScreen()
       end
     end
   end
+  term.setCursorPos(2,3)
   print(textutils.serialize(appList))
 end
 
