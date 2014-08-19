@@ -27,7 +27,7 @@ local function updateHomeScreen()
       end
     end
   end
-  term.setCursorPos(4,2)
+  term.setCursorPos(1,4)
   for appKey,theApp in ipairs(appList) do
     local h = fs.open(fs.combine(theApp, "settings"), "r")
     local text = h.readLine()
