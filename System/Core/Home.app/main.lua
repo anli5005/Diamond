@@ -65,7 +65,9 @@ while true do
         shell.setDir("")
         local tab = shell.openTab(fs.combine(theAppList[appY], "main.lua"))
         shell.switchTab(tab)
-        multishell.setTitle(tab, fs.getName(theAppList[appY]))
+        local h = fs.open(fs.combine(theAppList[appY], "settings"), "r")
+        multishell.setTitle(tab, h.readLine())
+        h.close()
       end
     elseif y > (h - 3) then
       -- Clicked menu
