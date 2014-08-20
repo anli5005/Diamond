@@ -54,8 +54,8 @@ if #theUsers == 0 then
       break
     end
   end
-  if fs.exists(fs.combine("/Users", theNewName)) then
-    fs.delete(fs.combine("/Users", theNewName))
+  if fs.exists(fs.combine("/Users/"..theNewName, "Diamond")) then
+    fs.delete(fs.combine("/Users/"..theNewName, "Diamond"))
   end
   fs.makeDir(fs.combine("/Users", theNewName))
   selected = theNewName
