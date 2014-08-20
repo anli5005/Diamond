@@ -87,8 +87,8 @@ while true do
       -- Clicked menu
       -- Draw menu
       term.setCursorPos(1,h-6)
-      term.setBackgroundColor(colors.gray)
-      term.setTextColor(colors.lightGray)
+      term.setBackgroundColor(colors.lightGray)
+      term.setTextColor(colors.gray)
       print("          ")
       print(" Shutdown ")
       print(" Restart  ")
