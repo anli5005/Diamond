@@ -95,6 +95,7 @@ while true do
           multishell.setTitle(tab, h.readLine())
         else
           multishell.setTitle(tab, fs.getName(theAppList[appY]))
+        end
         h.close()
       end
     elseif y > (h - 3) then
