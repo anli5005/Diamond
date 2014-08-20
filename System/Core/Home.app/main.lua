@@ -85,6 +85,14 @@ while true do
       end
     elseif y > (h - 3) then
       -- Clicked menu
+      -- Draw menu
+      term.setCursorPos(1,h-7)
+      term.setBackgroundColor(colors.gray)
+      term.setTextColor(colors.lightGray)
+      print("          ")
+      print(" Shutdown ")
+      print(" Restart  ")
+      print("          ")
     else
       if uses24hour then
         uses24hour = false
