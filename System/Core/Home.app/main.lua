@@ -93,6 +93,25 @@ while true do
       print(" Shutdown ")
       print(" Restart  ")
       print("          ")
+      while true do
+        local e, btn, aX, aY, aZ = os.pullEvent("mouse_click")
+        if e == "mouse_click" then
+          if aX < 11 then
+            if (aY < (h - 7)) and (aY > (h - 2)) then
+              if aY == (h - 5) then
+                os.shutdown()
+              elseif aY == (h - 4) then
+                os.reboot()
+              end
+            else
+              break
+            end
+          else
+            break
+          end
+        end
+      end
+      updateHomeScreen()
     else
       if uses24hour then
         uses24hour = false
