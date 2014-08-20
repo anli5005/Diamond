@@ -68,6 +68,9 @@ while true do
     updateHomeTime()
     timer = os.startTimer(0.1)
   end
+  if (event == "term_resize") then
+    updateHomeScreen()
+  end
   if (event == "mouse_click") then
     local b = p1
     local x = p2
