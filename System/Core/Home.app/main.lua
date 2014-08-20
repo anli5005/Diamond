@@ -14,8 +14,8 @@ local function updateHomeTime()
 end
 
 local function updateHomeScreen()
-  term.setBackgroundColor(colors.gray)
-  term.setTextColor(colors.lightGray)
+  term.setBackgroundColor(colors.blue)
+  term.setTextColor(colors.lightBlue)
   term.clear()
   updateHomeTime()
   
