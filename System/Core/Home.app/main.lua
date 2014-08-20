@@ -97,13 +97,11 @@ while true do
         local e, btn, aX, aY, aZ = os.pullEvent()
         if e == "mouse_click" then
           if aX < 11 then
-            if (aY < (h - 7)) and (aY > (h - 2)) then
+            if (aY > (h - 7)) and (aY < (h - 2)) then
               if aY == (h - 5) then
                 os.shutdown()
-                sleep(1)
               elseif aY == (h - 4) then
                 os.reboot()
-                sleep(5)
               end
             else
               break
