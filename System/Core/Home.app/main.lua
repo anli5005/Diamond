@@ -42,6 +42,18 @@ local function updateHomeScreen()
     print(" "..text)
   end
   theAppList = appList
+  
+  local w, h = term.getSize()
+  term.setBackgroundColor(colors.gray)
+  term.setTextColor(colors.lightGray)
+  term.setCursorPos(1,h-2)
+  term.clearLine()
+  print("")
+  term.clearLine()
+  print(" ^ ")
+  term.clearLine()
+  term.setTextColor(colors.gray)
+  term.setCursorBlink(true)
 end
 
 updateHomeScreen()
