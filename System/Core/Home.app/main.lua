@@ -14,8 +14,8 @@ local function updateHomeTime()
 end
 
 local function updateHomeScreen()
-  term.setBackgroundColor(colors.blue)
-  term.setTextColor(colors.lightBlue)
+  term.setBackgroundColor(colors.gray)
+  term.setTextColor(colors.lightGray)
   term.clear()
   updateHomeTime()
   
@@ -86,7 +86,7 @@ while true do
     elseif y > (h - 3) then
       -- Clicked menu
       -- Draw menu
-      term.setCursorPos(1,h-7)
+      term.setCursorPos(1,h-6)
       term.setBackgroundColor(colors.gray)
       term.setTextColor(colors.lightGray)
       print("          ")
