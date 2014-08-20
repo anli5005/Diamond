@@ -34,11 +34,18 @@ local function updateHomeScreen()
   end
   term.setCursorPos(1,4)
   for appKey,theApp in ipairs(appList) do
-    local h = fs.open(fs.combine(theApp, "settings"), "r")
-    local text = h.readLine()
-    local bg = tonumber(h.readLine())
-    local tColor = tonumber(h.readLine())
-    h.close()
+    local text, bg, tColor
+    if fs.exists(fs.combine(theApp, "settings")) then
+      local h = fs.open(fs.combine(theApp, "settings"), "r")
+      text = h.readLine()
+      bg = tonumber(h.readLine())
+      tColor = tonumber(h.readLine())
+      h.close()
+    else
+      text = fs.getName(theApp)
+      bg = colors.gray
+      tColor = colors.lightGray
+    end
     term.setBackgroundColor(bg)
     term.setTextColor(tColor)
     term.clearLine()
