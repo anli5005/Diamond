@@ -1,5 +1,6 @@
 shell.setDir("")
-shell.openTab("Diamond/System/Core/Notifications.app/main.lua")
+-- shell.openTab("Diamond/System/Core/Notifications.app/main.lua")
+-- will use when ready
 
 local theAppList = {}
 local uses24hour = false
