@@ -94,7 +94,7 @@ while true do
       print(" Restart  ")
       print("          ")
       while true do
-        local e, btn, aX, aY, aZ = os.pullEvent("mouse_click")
+        local e, btn, aX, aY, aZ = os.pullEvent()
         if e == "mouse_click" then
           if aX < 11 then
             if (aY < (h - 7)) and (aY > (h - 2)) then
@@ -108,6 +108,12 @@ while true do
             end
           else
             break
+          end
+        end
+        if e == "timer" then
+          if btn == timer then
+            updateHomeTime()
+            timer = os.startTimer(0.1)
           end
         end
       end
