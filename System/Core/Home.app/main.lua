@@ -91,7 +91,10 @@ while true do
         local tab = shell.openTab(fs.combine(theAppList[appY], "main.lua"))
         shell.switchTab(tab)
         local h = fs.open(fs.combine(theAppList[appY], "settings"), "r")
-        multishell.setTitle(tab, h.readLine())
+        if h then
+          multishell.setTitle(tab, h.readLine())
+        else
+          multishell.setTitle(tab, fs.getName(theAppList[appY]))
         h.close()
       end
     elseif y > (h - 3) then
