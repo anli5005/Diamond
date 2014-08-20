@@ -9,6 +9,7 @@ local function updateHomeTime()
   term.setCursorPos(2,2)
   term.clearLine()
   term.write(textutils.formatTime(os.time(), false))
+  term.setTextColor(colors.gray)
 end
 
 local function updateHomeScreen()
