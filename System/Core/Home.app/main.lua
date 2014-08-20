@@ -93,10 +93,10 @@ while true do
         local h = fs.open(fs.combine(theAppList[appY], "settings"), "r")
         if h then
           multishell.setTitle(tab, h.readLine())
+          h.close()
         else
           multishell.setTitle(tab, fs.getName(theAppList[appY]))
         end
-        h.close()
       end
     elseif y > (h - 3) then
       -- Clicked menu
