@@ -2,13 +2,14 @@ shell.setDir("")
 shell.openTab("Diamond/System/Core/Notifications.app/main.lua")
 
 local theAppList = {}
+local uses24hour = false
 
 local function updateHomeTime()
   term.setBackgroundColor(colors.gray)
   term.setTextColor(colors.lightGray)
   term.setCursorPos(2,2)
   term.clearLine()
-  term.write(textutils.formatTime(os.time(), false))
+  term.write(textutils.formatTime(os.time(), uses24hour))
   term.setTextColor(colors.gray)
 end
 
@@ -85,7 +86,12 @@ while true do
     elseif y > (h - 3) then
       -- Clicked menu
     else
-      -- Clicked clock
+      if uses24hour then
+        uses24hour = false
+      else
+        uses24hour = true
+      end
+      updateHomeTime()
     end
   end
 end
