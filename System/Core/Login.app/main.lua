@@ -1,22 +1,7 @@
-term.setBackgroundColor(colors.lightGray)
-term.clear()
-term.setBackgroundColor(colors.gray)
 local function clearLine(line)
   term.setCursorPos(1,line)
   term.clearLine()
 end
-clearLine(4)
-clearLine(3)
-clearLine(2)
-clearLine(1)
-term.setCursorPos(1,1)
-term.setTextColor(colors.lightGray)
-term.write("Diamond")
-term.setCursorPos(2,3)
-term.write("Welcome to Diamond")
-term.setBackgroundColor(colors.lightGray)
-term.setTextColor(colors.gray)
-
 local function checkForUsers()
   if fs.exists("/Users") then
     local userList = {}
@@ -34,6 +19,20 @@ local function checkForUsers()
   end
 end
 while true do
+  term.setBackgroundColor(colors.lightGray)
+  term.clear()
+  term.setBackgroundColor(colors.gray)
+  clearLine(4)
+  clearLine(3)
+  clearLine(2)
+  clearLine(1)
+  term.setCursorPos(1,1)
+  term.setTextColor(colors.lightGray)
+  term.write("Diamond")
+  term.setCursorPos(2,3)
+  term.write("Welcome to Diamond")
+  term.setBackgroundColor(colors.lightGray)
+  term.setTextColor(colors.gray)
   local selected
   local theUsers = checkForUsers()
   if #theUsers == 0 then
