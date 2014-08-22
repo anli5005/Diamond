@@ -50,7 +50,7 @@ while true do
         term.setCursorPos(2,y-1)
         term.clearLine()
       else
-        theNewName = newName
+        theNewName = string.gsub(newName, " ", "")
         break
       end
     end
