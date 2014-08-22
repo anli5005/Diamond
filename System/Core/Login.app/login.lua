@@ -21,7 +21,7 @@ while true do
           print(" Wrong password")
         end
         write(" ")
-        try = read()
+        try = read("*")
         if try == p then
           break
         end
