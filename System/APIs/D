@@ -1,0 +1,10 @@
+function NewClass(superclass)
+  local c
+  if superclass then
+    c = setmetatable({}, superclass)
+  else
+    c = {}
+  end
+  c.__index = c
+  return c
+end

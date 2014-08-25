@@ -1,2 +1,0 @@
-function DNewClass(superclass)
-end
