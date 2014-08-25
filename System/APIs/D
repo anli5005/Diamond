@@ -9,7 +9,7 @@ function NewClass(superclass) -- Creates new class
   return c
 end
 
-Object = {} -- An object
+Object = NewClass() -- An object
 function Object:new()
   return setmetatable({}, Object)
 end
