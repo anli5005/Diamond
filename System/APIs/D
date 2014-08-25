@@ -1,4 +1,4 @@
-function NewClass(superclass)
+function NewClass(superclass) -- Creates new class
   local c
   if superclass then
     c = setmetatable({}, superclass)
@@ -7,4 +7,12 @@ function NewClass(superclass)
   end
   c.__index = c
   return c
+end
+
+Object = {} -- An object
+function Object:new()
+  return setmetatable({}, Object)
+end
+function Object:getClass()
+  return getmetatable(self)
 end
