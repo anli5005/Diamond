@@ -42,6 +42,6 @@ while true do
   print(" ")
   print(" Welcome, "..multishell.DLogged.."!")
   shell.setDir("")
-  shell.run(DSystemPath.."/System/Core/Home.app/main.lua")
+  shell.run(DSystemPath.."/System/Core/Home.lua")
   break
 end
