@@ -18,6 +18,32 @@ local function setWindowTitle(n, title)
   processes[n].title = title
 end
 
+local function launch(isWindow, env, filepath, ...)
+  local args = {...}
+  local n = #processes + 1
+  local process = {}
+  process.title = "App"
+  process.borderWindow = window.create(parent, 1, 2, w, h-5, true)
+  if isWindow then
+    process.window = window.create(process.borderWindow, 2, 3, w-2, h-7, true)
+    process.borderWindow.setBackgroundColor(colors.lightGray)
+    process.borderWindow.clear()
+    process.borderWindow.setCursorPos(1,1)
+    process.borderWindow.write("App")
+    process.borderWindow.redraw()
+  else
+    process.window = process.borderWindow
+  end
+  process.co = coroutine.create(function()
+    os.run(env, filepath, unpack(args))
+  end)
+  process.isWindow = isWindow
+  process.filter = nil
+  processes[n] = process
+  resumeProcess(n)
+  return process
+end
+
 local function resumeProcess(n, event, ...)
   local process = processes[n]
   local filter = process.filter
@@ -35,3 +61,4 @@ local function resumeProcess(n, event, ...)
     runningP = prevProcess
   end
 end
+
