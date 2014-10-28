@@ -18,6 +18,24 @@ local function setWindowTitle(n, title)
   processes[n].title = title
 end
 
+local function resumeProcess(n, event, ...)
+  local process = processes[n]
+  local filter = process.filter
+  if filter == nil or filter == event or event == "terminate" then
+    local prevProcess = runningP
+    runningP = n
+    term.redirect(process.window)
+    local ok, result = coroutine.resume(process.co, event, ...)
+    process.window = term.current()
+    if ok then
+      process.filter = result
+    else
+      printError(result)
+    end
+    runningP = prevProcess
+  end
+end
+
 local function launch(isWindow, env, filepath, ...)
   local args = {...}
   local n = #processes + 1
@@ -43,22 +61,3 @@ local function launch(isWindow, env, filepath, ...)
   resumeProcess(n)
   return process
 end
-
-local function resumeProcess(n, event, ...)
-  local process = processes[n]
-  local filter = process.filter
-  if filter == nil or filter == event or event == "terminate" then
-    local prevProcess = runningP
-    runningP = n
-    term.redirect(process.window)
-    local ok, result = coroutine.resume(process.co, event, ...)
-    process.window = term.current()
-    if ok then
-      process.filter = result
-    else
-      printError(result)
-    end
-    runningP = prevProcess
-  end
-end
-
